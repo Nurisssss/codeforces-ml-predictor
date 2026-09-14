@@ -36,12 +36,12 @@ def scrape_problem_text(contest_id, index):
     return None
 
 # Scrape the first 5 problems
-for prob in rated_problems[:5]:
+for prob in rated_problems[:2000]:
     print(f"Scraping {prob['contestId']}{prob['index']}...")
     prob['text'] = scrape_problem_text(prob['contestId'], prob['index'])
     time.sleep(1.5) # Pause to avoid overloading the servers
 
 # 4. Save to CSV
-df = pd.DataFrame(rated_problems[:5])
+df = pd.DataFrame(rated_problems[:2000])
 df.to_csv('problems.csv', index=False)
 print("Saved to problems.csv!")
